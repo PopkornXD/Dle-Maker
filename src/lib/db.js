@@ -1,0 +1,14 @@
+import { createPool } from 'mariadb';
+
+if (!process.env.DB_USER || !process.env.DB_PASSWORD || !process.env.DB_NAME) {
+	throw new Error('Missing required environment variables: DB_USER, DB_PASSWORD, and DB_NAME must be set');
+}
+
+const pool = createPool({
+     host: process.env.DB_HOST,
+     user: process.env.DB_USER,
+     password: process.env.DB_PASSWORD,
+     database: process.env.DB_NAME
+});
+
+export default pool;
