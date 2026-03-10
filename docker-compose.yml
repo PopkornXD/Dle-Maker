@@ -1,15 +1,15 @@
-version: "3"
+version: "3.9"
 
 services:
-mariadb:
-  image: mariadb:11
-  restart: always
-  env_file:
-    - .env.db
-  volumes:
-    - dbdata:/var/lib/mysql
-  ports:
-    - "3306:3306"
+  mariadb:
+    image: mariadb:11
+    restart: always
+    env_file:
+      - .env.db
+    volumes:
+      - dbdata:/var/lib/mysql
+    ports:
+      - "3306:3306"
 
   web:
     build: .
