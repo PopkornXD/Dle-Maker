@@ -29,6 +29,4 @@ export async function load({ params, locals }) {
     } finally {
         if (conn) conn.release();
     }
-
-
 }
