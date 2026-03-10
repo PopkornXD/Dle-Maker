@@ -1,0 +1,6 @@
+tunnel: af4ebea2-421b-4fd5-84e4-e2cb8f6df799
+credentials-file: /etc/cloudflared/af4ebea2-421b-4fd5-84e4-e2cb8f6df799.json
+ingress:
+  - hostname: dlemaker.espolin.dev
+    service: http://web:3000
+  - service: http_status:404

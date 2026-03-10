@@ -8,8 +8,8 @@ services:
       - .env.db
     volumes:
       - dbdata:/var/lib/mysql
-    ports:
-      - "3306:3306"
+    networks:
+      - app-network
 
   web:
     build: .
@@ -18,8 +18,24 @@ services:
       - mariadb
     env_file:
       - .env
-    ports:
-      - "3000:3000"
+    networks:
+      - app-network
 
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    restart: unless-stopped
+    command: tunnel --no-autoupdate --config /etc/cloudflared/config.yml run
+    env_file:
+      - .env.cloudflare
+    volumes:
+      - ./cloudflared:/etc/cloudflared
+    networks:
+      - app-network
+    depends_on:
+      - web
 volumes:
   dbdata:
+
+networks:
+  app-network:
+    driver: bridge
