@@ -26,7 +26,7 @@
     </div>
 
     <div>
-        <label for="dataset">Import dataset</label>
+        <label for="dataset">Import dataset (dataset MUST have a 'name' column)</label>
         <textarea 
             id="dataset" 
             name="dataset" 

@@ -1,8 +1,9 @@
 <script>
 	import favicon from '$lib/assets/favicon.svg';
 
-	let { children, data } = $props();
+	export let data;
 </script>
+
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
@@ -17,7 +18,7 @@
 	{:else}
 		<a href="/create"><p>Create your own Dle</p></a>
 		<div>
-			<h2>{data.user.username}</h2>
+			<a href="/profile"><h2>{data.user.username}</h2></a>
 			<button onclick={() => {window.location.href = "/logout"}}>Logout</button>
 		</div>
 	{/if}
@@ -26,7 +27,7 @@
 
 
 <main>
-	{@render children()}
+	<slot />
 </main>
 
 
@@ -101,6 +102,14 @@
 	:global(a:hover) {
 		transform: scale(1.1);
 	}
+
+	div {
+		display: flex;
+		flex-direction: row;
+		gap: 10px;
+		align-items: center;
+	}
+
 
 
 </style>

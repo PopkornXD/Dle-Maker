@@ -52,7 +52,7 @@ export const actions = {
                 return `${col} ${dataType}`;
             }).join(', ');
             
-            await conn.query(`CREATE TABLE IF NOT EXISTS ${tableName} (${columnDefinitions})`);
+            await conn.query(`CREATE TABLE IF NOT EXISTS ${tableName} (id INT PRIMARY KEY AUTO_INCREMENT, ${columnDefinitions})`);
 
             
             const placeholders = columnNames.map(() => '?').join(', ');

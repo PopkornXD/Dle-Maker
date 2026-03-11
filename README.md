@@ -1,42 +1,32 @@
-# sv
+# DLE MAKER
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+This is a platform for users to create and distribute "dle"-games easily by merely creating an Excel sheet with the data.
 
-## Creating a project
+The data from Excel should be on the form:
 
-If you're seeing this, you've probably already done this step. Congrats!
 
-```sh
-# create a new project
-npx sv create my-app
-```
+| Category1 | Category2 | Category3 | Category4 | ... |
+| --- | --- | --- | --- | ---|
+| entry1 |
+| entry2 |
+| ... |
 
-To recreate this project with the same configuration:
+The website is hosted on cloudflare using a tunnel directed at docker containers placed inside a virtual machine on Oracle Cloud:
 
-```sh
-# recreate this project
-npx sv@0.12.5 create --template minimal --types jsdoc --install npm app
-```
+**https://dlemaker.espolin.dev/**
 
-## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Features
 
-```sh
-npm run dev
+- **User Authentication**: Registration and login functionality with bcrypt password encryption
+- **Create & Distribute**: Functionality to create and distribute your dle-games so that you and others can enjoy it.
+- **External Database**: The database is securely kept on a seperate container on a virtual machine for security, no downtime, and scalability.
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+## Tech Stack
 
-## Building
+- **Frontend**: SvelteKit, Svelte 5
+- **Backend**: SvelteKit server-side routes
+- **Database**: MariaDB
+- **Authentication**: Custom auth with bcrypt
+- **Deployment**: Docker containers, Cloudflare Tunnel with reverse proxy
 
-To create a production version of your app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
