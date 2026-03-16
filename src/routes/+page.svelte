@@ -24,7 +24,7 @@
                             <p>{category}</p>
                         {/each}
                     </div>    
-                        
+                    
                     
                 </div>
             </a>

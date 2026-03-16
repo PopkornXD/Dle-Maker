@@ -96,6 +96,15 @@
                 <div class="correctCategory">
                     <h2>{guess[category].value}</h2>
                 </div>
+            {:else if guess[category].partialMatch}
+                <div class="partialCategory">
+                    <h2>{guess[category].value}</h2>
+                    {#if guess[category].higher == true}
+                        <p>&darr;</p>
+                    {:else if guess[category].higher == false}
+                        <p>&uarr;</p>
+                    {/if}
+                </div>
             {:else}
                 <div class="wrongCategory">
                     <h2>{guess[category].value}</h2>
@@ -181,6 +190,16 @@
 
     .correctCategory {
         background-color: green;
+        display: grid;
+        place-items: center;
+        margin: 10px;
+        height: 100%;
+        width: 100%;
+        text-align: center;
+    }
+
+    .partialCategory {
+        background-color: yellow;
         display: grid;
         place-items: center;
         margin: 10px;

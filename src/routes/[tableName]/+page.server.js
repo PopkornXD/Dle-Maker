@@ -62,12 +62,25 @@ export async function load({ params, locals, cookies, url }) {
         const categories = Object.keys(rows[0]);
         categories.shift();
 
+        function hasPartialWordMatch(value1, value2) {
+            if (typeof value1 !== 'string' || typeof value2 !== 'string') {
+                return false;
+            }
+            const words1 = value1.toLowerCase().split(/\s+/);
+            const words2 = value2.toLowerCase().split(/\s+/);
+            return words1.some(word1 => words2.includes(word1));
+        }
+
         const rowsWithComparison = rows.map((row) => {
             const comparisonRow = {};
             for (const key in row) {
+                const isExactMatch = row[key] === correctRow[0][key];
+                const hasPartialMatch = !isExactMatch && hasPartialWordMatch(row[key], correctRow[0][key]);
+                
                 comparisonRow[key] = {
                     value: row[key],
-                    isCorrect: row[key] === correctRow[0][key],
+                    isCorrect: isExactMatch,
+                    partialMatch: hasPartialMatch,
                     higher: typeof row[key] === 'number' ? row[key] > correctRow[0][key] : null
                 };
             }
