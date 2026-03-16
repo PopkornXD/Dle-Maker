@@ -44,23 +44,105 @@
 
 
 <style>
-    textarea {
-        width: 80vw;
-        height: 300px;
+    h1 {
+        font-size: clamp(24px, 5vw, 36px);
+        text-align: center;
+        margin: 20px 10px;
     }
 
     form {
         display: flex;
         flex-direction: column;
-    }
-
-    button {
-        height: 50px;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        box-sizing: border-box;
     }
 
     div {
         display: flex;
         flex-direction: column;
         margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: 600;
+        margin-bottom: 8px;
+        font-size: clamp(14px, 2.5vw, 16px);
+        color: #333;
+    }
+
+    input {
+        padding: 12px;
+        font-size: clamp(14px, 2.5vw, 16px);
+        border: 2px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input:focus {
+        outline: none;
+        border-color: #4CAF50;
+    }
+
+    textarea {
+        width: 100%;
+        height: 300px;
+        padding: 12px;
+        font-size: clamp(13px, 2vw, 14px);
+        font-family: monospace;
+        border: 2px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+        resize: vertical;
+    }
+
+    textarea:focus {
+        outline: none;
+        border-color: #4CAF50;
+    }
+
+    button {
+        height: 50px;
+        font-size: clamp(16px, 3vw, 18px);
+        font-weight: 600;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    @media (max-width: 768px) {
+        form {
+            padding: 15px;
+        }
+
+        textarea {
+            height: 250px;
+        }
+
+        button {
+            height: 48px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        form {
+            padding: 10px;
+        }
+
+        textarea {
+            height: 200px;
+        }
+
+        button {
+            height: 44px;
+        }
     }
 </style>
