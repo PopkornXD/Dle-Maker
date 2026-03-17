@@ -243,39 +243,39 @@
     .categories h2 {
         margin: 0;
         padding: 8px 4px;
-        font-size: clamp(10px, 1.2vw, 16px);
+        font-size: clamp(8px, 3vw, 16px);
         font-weight: 700;
         color: #333;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
+        letter-spacing: 0.3px;
         display: flex;
         align-items: center;
         justify-content: center;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        text-align: center;
+        line-height: 1.1;
         overflow: hidden;
         text-overflow: ellipsis;
-        word-wrap: break-word;
-        hyphens: auto;
-        text-align: center;
-        line-height: 1.2;
-        white-space: nowrap;
+        max-width: 100%;
     }
 
     .guessRow h2 {
         margin: 0;
         padding: 8px 4px;
-        font-size: clamp(10px, 1.2vw, 16px);
+        font-size: clamp(8px, 3vw, 16px);
         font-weight: 600;
-        overflow: hidden;
-        text-overflow: ellipsis;
         word-wrap: break-word;
-        hyphens: auto;
+        overflow-wrap: break-word;
         text-align: center;
-        line-height: 1.2;
+        line-height: 1.1;
         color: #333;
         display: flex;
         align-items: center;
         justify-content: center;
-        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
     }
 
     .correctCategory,
@@ -290,6 +290,7 @@
         text-align: center;
         transition: transform 0.1s;
         border: 2px solid #000;
+        container-type: inline-size;
     }
 
     .correctCategory {
@@ -316,21 +317,26 @@
     .correctCategory h2,
     .partialCategory h2,
     .wrongCategory h2 {
-        font-size: clamp(10px, 1.2vw, 16px);
+        font-size: clamp(7px, 10cqw, 16px);
         word-wrap: break-word;
         overflow-wrap: break-word;
-        hyphens: auto;
         max-width: 100%;
-        line-height: 1.2;
+        line-height: 1.1;
+        margin: 0 0 2px 0;
+        font-weight: 600;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .correctCategory p,
     .partialCategory p,
     .wrongCategory p {
-        margin: 4px 0 0 0;
-        font-size: clamp(16px, 2.5vw, 28px);
+        margin: 0;
+        font-size: clamp(20px, 20cqw, 36px);
         font-weight: bold;
+        max-width: 100%;
         line-height: 1;
+        overflow: hidden;
     }
 
     h1, h2, p {
