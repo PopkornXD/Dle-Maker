@@ -48,32 +48,34 @@
         <p>You have not made any games D:</p>
     {/if}
 
-    {#each data.tables as table}
-        <a href="/{table.tableName}?reset=true">
-            <div class="game">
-                <h2>{table.title}</h2>
-                <p class="author">by {table.author}</p>
+    <div class="gameGallery">
+        {#each data.tables as table}
+            <a href="/{table.tableName}?reset=true">
+                <div class="game">
+                    <h2>{table.title}</h2>
+                    <p class="author">by {table.author}</p>
 
-                <h5>Categories</h5>
+                    <h5>Categories</h5>
 
-                <div class="categories">
-                    {#each table.categories as category}
-                        <p>{category}</p>
-                    {/each}
-                </div>
+                    <div class="categories">
+                        {#each table.categories as category}
+                            <p>{category}</p>
+                        {/each}
+                    </div>
 
-                <button 
-                    class="delete-btn" 
-                    on:click={(e) => deleteGame(table.tableName, e)}
-                    disabled={deleting === table.tableName}
-                >
-                    {deleting === table.tableName ? 'Deleting...' : 'Delete Game'}
-                </button>
+                    <button 
+                        class="delete-btn" 
+                        on:click={(e) => deleteGame(table.tableName, e)}
+                        disabled={deleting === table.tableName}
+                    >
+                        {deleting === table.tableName ? 'Deleting...' : 'Delete Game'}
+                    </button>
+                        
                     
-                
-            </div>
-        </a>
-    {/each}
+                </div>
+            </a>
+        {/each}
+    </div>
 
 </main>
 
@@ -93,6 +95,15 @@
         font-size: clamp(24px, 5vw, 36px);
         margin-bottom: 30px;
         text-align: center;
+    }
+
+    .gameGallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 30px;
+        width: 100%;
+        max-width: 1200px;
+        padding: 0 10px;
     }
 
     h2 {
@@ -122,16 +133,21 @@
         flex-direction: row;
         justify-content: center;
         flex-wrap: wrap;
-        gap: 8px;
+        gap: 6px;
         width: 100%;
-        margin: 10px 0;
+        margin: 10px 0 15px;
+        min-height: 40px;
     }
 
     .categories p {
         background-color: #f0f0f0;
-        padding: 4px 12px;
+        padding: 4px 10px;
         border-radius: 4px;
-        font-size: clamp(11px, 1.8vw, 13px);
+        font-size: clamp(10px, 1.6vw, 12px);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
     }
 
     .game {
@@ -145,9 +161,8 @@
         border-radius: 8px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         position: relative;
-        margin-bottom: 20px;
-        width: 100%;
-        max-width: 400px;
+        height: 100%;
+        min-height: 280px;
     }
 
     .game:hover {
@@ -159,12 +174,11 @@
         color: black;
         text-decoration: none;
         width: 100%;
-        display: flex;
-        justify-content: center;
+        height: 100%;
     }
 
     .delete-btn {
-        margin-top: 15px;
+        margin-top: auto;
         padding: 10px 20px;
         background-color: #dc3545;
         color: white;
@@ -172,10 +186,10 @@
         border-radius: 4px;
         cursor: pointer;
         font-weight: bold;
-        font-size: clamp(14px, 2.5vw, 16px);
+        font-size: clamp(13px, 2.2vw, 15px);
         transition: background-color 0.2s;
         width: 100%;
-        max-width: 200px;
+        max-width: 180px;
     }
 
     .delete-btn:hover:not(:disabled) {
@@ -192,9 +206,14 @@
             padding: 15px 10px;
         }
 
+        .gameGallery {
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
         .game {
             padding: 15px;
-            max-width: 100%;
+            min-height: 260px;
         }
     }
 
@@ -203,12 +222,19 @@
             padding: 10px 5px;
         }
 
+        .gameGallery {
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
         .game {
-            padding: 12px;
+            padding: 15px;
+            min-height: 240px;
         }
 
         .delete-btn {
             padding: 8px 16px;
+            max-width: 160px;
         }
     }
 </style>

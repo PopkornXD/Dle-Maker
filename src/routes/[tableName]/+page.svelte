@@ -211,13 +211,32 @@
         background-color: #45a049;
     }
 
-    .categories {
+    .categories,
+    .guessRow {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-        gap: 20px;
+        gap: 8px;
         padding: 15px;
-        margin: 20px auto;
-        max-width: 1200px;
+        margin: 10px auto;
+        width: 100%;
+        max-width: 100vw;
+        box-sizing: border-box;
+        overflow-x: auto;
+    }
+
+    .categories {
+        margin-top: 20px;
+        gap: 20px;
+    }
+
+    /* Force all items on one line */
+    .categories {
+        grid-auto-flow: column;
+        grid-auto-columns: minmax(100px, 1fr);
+    }
+
+    .guessRow {
+        grid-auto-flow: column;
+        grid-auto-columns: minmax(100px, 1fr);
     }
 
     .categories h1,
@@ -238,15 +257,7 @@
         hyphens: auto;
         text-align: center;
         line-height: 1.2;
-    }
-
-    .guessRow {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-        gap: 8px;
-        padding: 15px;
-        margin: 10px auto;
-        max-width: 1200px;
+        white-space: nowrap;
     }
 
     .guessRow h2 {
@@ -264,6 +275,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        white-space: nowrap;
     }
 
     .correctCategory,
@@ -329,9 +341,16 @@
     @media (max-width: 768px) {
         .categories,
         .guessRow {
-            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-            gap: 10px;
             padding: 10px;
+            gap: 6px;
+        }
+
+        .categories {
+            grid-auto-columns: minmax(80px, 1fr);
+        }
+
+        .guessRow {
+            grid-auto-columns: minmax(80px, 1fr);
         }
 
         .correctCategory,
@@ -366,9 +385,16 @@
     @media (max-width: 480px) {
         .categories,
         .guessRow {
-            grid-template-columns: repeat(auto-fit, minmax(65px, 1fr));
-            gap: 6px;
             padding: 8px;
+            gap: 4px;
+        }
+
+        .categories {
+            grid-auto-columns: minmax(65px, 1fr);
+        }
+
+        .guessRow {
+            grid-auto-columns: minmax(65px, 1fr);
         }
 
         .correctCategory,
