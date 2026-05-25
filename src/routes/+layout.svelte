@@ -33,6 +33,7 @@
 
 <footer>
 	<a href="/privacy_policy"><p>Privacy Policy</p></a>
+	<a href="/terms_of_service"><p>Terms of Service</p></a>
 </footer>
 
 
@@ -82,6 +83,7 @@
 		background-color: black;
 		display: flex;
 		align-items: center;
+		gap: 40px;
 		justify-content: center;
 	}
 
