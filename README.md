@@ -30,3 +30,12 @@ The website is hosted on cloudflare using a tunnel directed at docker containers
 - **Authentication**: Custom auth with bcrypt
 - **Deployment**: Docker containers, Cloudflare Tunnel with reverse proxy
 
+
+## Running locally
+
+Prerequisites:
+
+- Docker
+
+
+
